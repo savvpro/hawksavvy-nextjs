@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* Dark mode via class strategy (next-themes adds .dark to <html>) */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* ─── Dark Theme Neutrals ─── */
+  --color-obsidian: #0B1020;
+  --color-midnight-slate: #111827;
+  --color-deep-slate: #1E293B;
+  --color-cloud-white: #F8FAFC;
+  --color-mist: #E5EEF5;
+  --color-steel: #CBD5E1;
+  --color-silver: #94A3B8;
+
+  /* ─── Light Theme Neutrals ─── */
+  --color-pearl: #F5F8FB;
+  --color-chalk: #ECF1F8;
+  --color-frost: #E2EAF3;
+  --color-hairline: #D6E0ED;
+  --color-ghost: #EBF0F7;
+  --color-ink: #0C1628;
+  --color-slate-text: #253B55;
+  --color-graphite: #5B7492;
+  --color-pewter: #8BA3BE;
+
+  /* ─── Accent Colors ─── */
+  --color-signal-teal: #0D9488;
+  --color-teal-dark: #0A7A74;
+  --color-vector-sky: #38BDF8;
+  --color-sky-dark: #0369A1;
+  --color-sovereign-sand: #D6C6A5;
+  --color-sand-dark: #7A5E28;
+  --color-controlled-copper: #B87333;
+
+  /* ─── Fonts (populated by next/font via CSS vars) ─── */
+  --font-display: var(--font-manrope);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
+
+  /* ─── Easing ─── */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Base Styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background-color: #F5F8FB;
+  color: #0C1628;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #0B1020;
+  color: #F8FAFC;
+}
+
+/* ─── Prose max-width for readability ─── */
+.prose-width {
+  max-width: 68ch;
+}
+
+/* ─── Focus visible ring ─── */
+:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: #0D9488;
+  color: #F8FAFC;
+}
+
+/* ─── Scrollbar (dark) ─── */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #111827;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+/* ─── Section spacing helpers ─── */
+.section-padding {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
